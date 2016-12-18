@@ -4,6 +4,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'pundit'
+gem 'rspec-rails', '~> 3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
