@@ -15,15 +15,15 @@ RSpec.describe User, :type => :model do
     )
   }
 
-  let(:first_game) {
+  let(:game) {
     Game.create(
     datetime: today_plus_one.to_s,
     location: "City Park"
     )
   }
 
-  let(:second_game) {
-    Game.create(
+  let(:practice) {
+    Practice.create(
       :datetime => today_plus_one.to_s,
       :location => "City Park",
     )
@@ -38,33 +38,40 @@ RSpec.describe User, :type => :model do
   end
 
   it "has many game_players" do
-    first_game_player = GamePlayer.create(user_id: user.id, game_id: first_game.id)
-    second_game_player = GamePlayer.create(user_id: user.id, game_id: second_game.id)
-    expect(user.game_players.first).to eq(first_game_player)
-    expect(user.game_players.last).to eq(second_game_player)
+    game_player = GamePlayer.create(user_id: user.id, game_id: game.id)
+    expect(user.game_players.first).to eq(game_player)
   end
 
   it "has many games through game_players" do
-    user.games << [first_game, second_game]
-    expect(user.games.first).to eq(first_game)
-    expect(user.games.last).to eq(second_game)
+    user.games << game
+    expect(user.games.first).to eq(game)
+  end
+
+  it "has many practice_players" do
+    practice_player = PracticePlayers.create(user_id: user.id, game_id: game.id)
+    expect(user.practice_players.first).to eq(practice_player)
+  end
+
+  it "has many practices through practice_players" do
+    user.practices << practice
+    expect(user.practices.first).to eq(practice)
   end
 
   it "#role is 'user' by default" do
-    expect(@user.role).to eq "user"
+    expect(user.role).to eq "user"
   end
 
   it "#role can be set to :coach" do
-    @user.role = :coach
-    expect(@user.role).to eq "coach"
+    user.role = :coach
+    expect(user.role).to eq "coach"
   end
 
   it "#email returns a string" do
-    expect(@user.email).to be_a(String)
+    expect(user.email).to be_a(String)
   end
 
   it "#name returns a string" do
-    expect(@user.name).to be_a(String)
+    expect(user.name).to be_a(String)
   end
 
 end

@@ -17,7 +17,7 @@ RSpec.describe Team, type: :model do
   end
 
   it "#name returns a string" do
-    expect(@user.name).to be_a(String)
+    expect(team.name).to be_a(String)
   end
 
 end
