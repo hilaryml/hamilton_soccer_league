@@ -1,18 +1,53 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  before(:each) do
-    @user = User.first
+RSpec.describe User, :type => :model do
+  let(:team) {
+    Team.create(
+      :name => "Green Goblins"
+    )
+  }
+
+  let(:user) {
+    User.create(
+      :name => "Player 1",
+      :email => "email@email.com",
+      :password => "password",
+    )
+  }
+
+  let(:first_game) {
+    Game.create(
+    datetime: today_plus_one.to_s,
+    location: "City Park"
+    )
+  }
+
+  let(:second_game) {
+    Game.create(
+      :datetime => today_plus_one.to_s,
+      :location => "City Park",
+    )
+  }
+
+  it "is valid with a team_id" do
+    expect(user).to be_valid
   end
 
-  it "belongs to a team" do
-    @user.team.create
-    expect(@user.team.count).to eq(1)
+  it "belongs to one team" do
+    expect(user.team).to eq(team)
   end
 
-  it "has many games" do
-    @user.game.create
-    expect(@user.game.count).to eq(1)
+  it "has many game_players" do
+    first_game_player = GamePlayer.create(user_id: user.id, game_id: first_game.id)
+    second_game_player = GamePlayer.create(user_id: user.id, game_id: second_game.id)
+    expect(user.game_players.first).to eq(first_game_player)
+    expect(user.game_players.last).to eq(second_game_player)
+  end
+
+  it "has many games through game_players" do
+    user.games << [first_game, second_game]
+    expect(user.games.first).to eq(first_game)
+    expect(user.games.last).to eq(second_game)
   end
 
   it "#role is 'user' by default" do
