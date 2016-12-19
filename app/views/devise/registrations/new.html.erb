@@ -5,12 +5,27 @@
 
   <div class="field">
     <%= f.label "Name" %><br />
-    <%= f.email_field :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Position" %><br />
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Team" %><br />
+    <%= f.collection_select :team, Team.all, :id, :name %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Check box if you are a coach." %><br />
+    <%= f.check_box :role %>
   </div>
 
   <div class="field">
