@@ -4,6 +4,10 @@ class UserPolicy < ApplicationPolicy
     user.coach? || record == user
   end
 
+  def create?
+    user.coach?
+  end
+
   def update?
     user.coach?
   end

@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-
   before_action :set_team
 
   def index
@@ -22,7 +21,6 @@ class TeamsController < ApplicationController
 
   def destroy
   end
-
 
   private
 
