@@ -1,17 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :feature do
-  before(:each) do
-    user = User.create(
-      name: "New User",
-      email: "useremail@email.com",
-      password: "userpassword"
+  let(:user) {
+    User.create(
+    name: "New User",
+    email: "useremail@email.com",
+    password: "userpassword"
     )
+  }
+
+  before(:each) do
     visit root_path
-    fill_in 'Name', with: user.name
+    click_on "Sign in"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on "Log In"
+    click_on "Log in"
   end
 
   it 'user changes email address' do
@@ -27,7 +30,7 @@ RSpec.describe User, :type => :feature do
     other = User.create(name: "Other User", email: 'otheremail@example.com', password: "otherpassword")
     visit edit_user_registration_path(other)
     expect(page).to have_content 'Edit User'
-    expect(page).to have_field('Email', with: me.email)
+    expect(page).to have_field('Email', with: user.email)
   end
 
 end

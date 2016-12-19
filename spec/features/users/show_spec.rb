@@ -1,17 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :feature do
-  before(:each) do
-    user = User.create(
-      name: "New User",
-      email: "useremail@email.com",
-      password: "userpassword"
+
+  let(:user) {
+    User.create(
+    name: "New User",
+    email: "useremail@email.com",
+    password: "userpassword"
     )
+  }
+
+  before(:each) do
     visit root_path
-    fill_in 'Name', with: user.name
+    click_on "Sign in"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on "Log In"
+    click_on "Log in"
   end
 
   it 'user sees own profile' do
