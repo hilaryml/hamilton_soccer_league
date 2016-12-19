@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     unless authorize @user
-      redirect_to users_path, alert: "Access denied."
+      redirect_to users_path
     end
   end
 
@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    user = User.new(user_params)
+    if authorize user
+      user.save
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      redirect_to new_user_path
+    end
   end
 
   def edit
@@ -21,7 +29,7 @@ class UsersController < ApplicationController
       @user.update(user_params)
       redirect_to user_path(@user)
     else
-      redirect_to users_path, alert: "Access denied."
+      redirect_to users_path
     end
   end
 
@@ -29,9 +37,9 @@ class UsersController < ApplicationController
     if current_user
       authorize @user
       @user.destroy
-      redirect_to users_path, alert: "Successfully deleted user."
+      redirect_to users_path
     else
-      redirect_to users_path, alert: "Access Denied."
+      redirect_to users_path
     end
   end
 
