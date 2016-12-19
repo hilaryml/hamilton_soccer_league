@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Game, :type => :model do
   let(:game) {
     Game.create(
-      :datetime => today_plus_one.to_s
+      :datetime => "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}"
     )
   }
 

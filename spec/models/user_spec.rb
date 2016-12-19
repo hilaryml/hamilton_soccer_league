@@ -12,20 +12,21 @@ RSpec.describe User, :type => :model do
       :name => "Player 1",
       :email => "email@email.com",
       :password => "password",
+      :team_id => team.id
     )
   }
 
   let(:game) {
     Game.create(
-    datetime: today_plus_one.to_s,
+    datetime: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
     location: "City Park"
     )
   }
 
   let(:practice) {
     Practice.create(
-      :datetime => today_plus_one.to_s,
-      :location => "City Park",
+      :datetime => "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
+      :location => "City Park"
     )
   }
 
@@ -37,9 +38,9 @@ RSpec.describe User, :type => :model do
     expect(user.team).to eq(team)
   end
 
-  it "has many game_players" do
-    game_player = GamePlayer.create(user_id: user.id, game_id: game.id)
-    expect(user.game_players.first).to eq(game_player)
+  it "has many game_users" do
+    game_user = GameUser.create(user_id: user.id, game_id: game.id)
+    expect(user.game_users.first).to eq(game_user)
   end
 
   it "has many games through game_players" do
@@ -47,18 +48,18 @@ RSpec.describe User, :type => :model do
     expect(user.games.first).to eq(game)
   end
 
-  it "has many practice_players" do
-    practice_player = PracticePlayers.create(user_id: user.id, game_id: game.id)
-    expect(user.practice_players.first).to eq(practice_player)
+  it "has many practice users" do
+    practice_user = PracticeUser.create(user_id: user.id, practice_id: practice.id)
+    expect(user.practice_users.first).to eq(practice_user)
   end
 
-  it "has many practices through practice_players" do
+  it "has many practices through practice users" do
     user.practices << practice
     expect(user.practices.first).to eq(practice)
   end
 
-  it "#role is 'user' by default" do
-    expect(user.role).to eq "user"
+  it "#role is 'player' by default" do
+    expect(user.role).to eq "player"
   end
 
   it "#role can be set to :coach" do

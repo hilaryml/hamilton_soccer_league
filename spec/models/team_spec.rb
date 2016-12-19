@@ -11,9 +11,9 @@ RSpec.describe Team, type: :model do
     expect(team).to be_valid
   end
 
-  it "has many players" do
-    user = User.create(name: "Player 2", team_id: team.id)
-    expect(team.user.count).to eq(1)
+  it "has many users" do
+    user = User.create(name: "Player 1", team_id: team.id, email: "email@email.com", password: "password")
+    expect(team.users.count).to eq(1)
   end
 
   it "#name returns a string" do

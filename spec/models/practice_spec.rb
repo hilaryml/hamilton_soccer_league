@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Practice, :type => :model do
   let(:practice) {
     Practice.create(
-      :datetime => today_plus_one.to_s
+      :datetime => "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}"
     )
   }
 
