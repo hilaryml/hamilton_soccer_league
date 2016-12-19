@@ -4,6 +4,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'pundit'
+gem 'capybara'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
