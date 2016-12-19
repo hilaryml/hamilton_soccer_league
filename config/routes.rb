@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :teams
-  resources :games
-  resources :practices
+  resources :teams do
+    resources :games
+    resources :practices
+  end
 
   root 'application#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
