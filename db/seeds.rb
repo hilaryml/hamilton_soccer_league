@@ -19,16 +19,6 @@ team_counter = 0
     role: 1
     )
 
-  Game.create(
-    datetime: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-    location: "City Park"
-  )
-
-  Practice.create(
-    datetime: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-    location: "City Park"
-  )
-
   player_counter = 0
 
   10.times do
