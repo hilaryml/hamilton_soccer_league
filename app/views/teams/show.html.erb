@@ -1,6 +1,17 @@
 <h1><%= @team.name %>'s Roster</h1>
+
+<% if current_user.coach? %>
+  <%= link_to "Edit Team", edit_team_path %>
+  <%= link_to "Delete Team", @team, method: :delete, data: { confirm: "Really?" } %>
+<% end %>
+
 <p><strong>Coach:</strong> <%= @team.coach_name %></p><br>
 <p><strong>Players:</strong><br>
   <% @team.players.each do |player| %>
   <p><%= player.name %></p>
+<% end %>
+
+<%= form_tag("/teams/schedule") do %>
+   <%= hidden_field_tag :id, @team.id %>
+   <%= submit_tag "Team Schedule" %>
 <% end %>

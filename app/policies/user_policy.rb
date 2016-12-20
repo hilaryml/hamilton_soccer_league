@@ -5,14 +5,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.coach?
+    record == user || user.coach?
   end
 
   def update?
-    user.coach?
+    record == user || user.coach?
   end
 
   def destroy?
-    user.coach?
+    record == user || user.coach?
   end
 end

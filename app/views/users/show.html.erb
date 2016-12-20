@@ -1,5 +1,9 @@
 <h1><%= @user.name %>'s Profile</h1>
 
+<% if @user == current_user || current_user.coach? %>
+  <%= link_to "Edit Profile", edit_user_registration_path %>
+<% end %>
+
 <p><strong>Email:</strong> <%= @user.email %></p>
 
 <%= form_tag("/teams/schedule") do %>
