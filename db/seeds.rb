@@ -7,14 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 team_counter = 0
 
-10.times do
+5.times do
 
-  Team.create(name: 'Team ' + "#{team_counter}")
+  Team.create(name: 'Team ' + "#{team_counter + 1}")
 
   User.create(
-    name: 'Coach ' + "#{team_counter}",
-    email: 'coach' + "#{team_counter}" + '@email.com',
-    password: 'coachpassword' + "#{team_counter}",
+    name: 'Coach ' + "#{team_counter + 1}",
+    email: 'coach' + "#{team_counter + 1}" + '@email.com',
+    password: 'coachpassword' + "#{team_counter + 1}",
+    team_id: team_counter + 1,
     role: 1
     )
 
@@ -32,10 +33,10 @@ team_counter = 0
 
   10.times do
     User.create(
-      name: 'Player ' + "#{player_counter}",
-      email: 'email' + "#{player_counter}" + '@email.com',
-      password: 'password' + "#{player_counter}",
-      team_id: team_counter - 1,
+      name: 'Player ' + "#{player_counter + 1}",
+      email: 'email' + "#{player_counter + 1}" + '@email.com',
+      password: 'password' + "#{player_counter + 1}",
+      team_id: team_counter + 1,
       role: 0
       )
 
