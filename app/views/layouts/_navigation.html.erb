@@ -1,7 +1,7 @@
 <%= link_to "U10 Teams", teams_path %>
 
 <% if user_signed_in? %>
-  <%= link_to "Your Profile", user_path(current_user) %>
+  <%= link_to "Your Profile", team_user_path(current_user.team, current_user) %>
   <%= link_to "Your Team", team_path(current_user.team_id) %>
   <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
 <% else %>

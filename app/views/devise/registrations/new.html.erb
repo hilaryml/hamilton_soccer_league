@@ -9,11 +9,6 @@
   </div>
 
   <div class="field">
-    <%= f.label "Position" %><br />
-    <%= f.text_field :position %>
-  </div>
-
-  <div class="field">
     <%= f.label "Team" %><br />
     <%= f.collection_select :team, Team.all, :id, :name %>
   </div>
