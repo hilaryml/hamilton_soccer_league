@@ -1,0 +1,6 @@
+<h1><%= @team.name %>'s Roster</h1>
+<p><strong>Coach:</strong> <%= @team.coach_name %></p><br>
+<p><strong>Players:</strong><br>
+  <% @team.players.each do |player| %>
+  <p><%= player.name %></p>
+<% end %>
