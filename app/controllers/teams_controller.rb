@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    unless authorize team
+    unless authorize @team
       redirect_to teams_path
     end
   end

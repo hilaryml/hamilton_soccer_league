@@ -1,9 +1,8 @@
 class Team < ActiveRecord::Base
   has_many :users
 
-  def players_names
-    players = self.users.map { |user| user.player? }
-    players.each { |player| player.name }
+  def players
+    self.users.where(role: 0)
   end
 
   def coach_name
