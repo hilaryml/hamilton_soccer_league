@@ -6,10 +6,6 @@ class User < ActiveRecord::Base
 
   enum role: [:player, :coach]
 
-  has_many :game_users
-  has_many :games, through: :game_users
-  has_many :practice_users
-  has_many :practices, through: :practice_users
   belongs_to :team
 
 end

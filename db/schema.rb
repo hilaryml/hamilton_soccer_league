@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20161219002402) do
 
-  create_table "game_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "game_users", ["game_id"], name: "index_game_users_on_game_id"
-  add_index "game_users", ["user_id"], name: "index_game_users_on_user_id"
-
   create_table "games", force: :cascade do |t|
     t.datetime "datetime"
     t.string   "location"
@@ -30,22 +20,32 @@ ActiveRecord::Schema.define(version: 20161219002402) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "practice_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "practice_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "practice_users", ["practice_id"], name: "index_practice_users_on_practice_id"
-  add_index "practice_users", ["user_id"], name: "index_practice_users_on_user_id"
-
   create_table "practices", force: :cascade do |t|
     t.datetime "datetime"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "team_games", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "team_games", ["game_id"], name: "index_team_games_on_game_id"
+  add_index "team_games", ["team_id"], name: "index_team_games_on_team_id"
+
+  create_table "team_practices", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "practice_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "team_practices", ["practice_id"], name: "index_team_practices_on_practice_id"
+  add_index "team_practices", ["team_id"], name: "index_team_practices_on_team_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 20161219002402) do
     t.integer  "team_id"
     t.string   "name"
     t.integer  "role",                   default: 0
-    t.string   "position"
-    t.integer  "goals"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

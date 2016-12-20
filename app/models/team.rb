@@ -1,5 +1,9 @@
 class Team < ActiveRecord::Base
   has_many :users
+  has_many :team_games
+  has_many :games, through: :team_games
+  has_many :team_practices
+  has_many :practices, through: :team_practices
 
   def players
     self.users.where(role: 0)

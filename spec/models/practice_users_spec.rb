@@ -1,18 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe PracticeUser, :type => :model do
-  let(:practice_user) {
-    PracticeUser.create(
-      :user_id => user.id,
+RSpec.describe TeamPractice, :type => :model do
+  let(:team_practice) {
+    TeamPractice.create(
+      :team_id => team.id,
       :practice_id => practice.id
     )
   }
 
-  let(:user) {
-    User.create(
-      :name => "Player 1",
-      :email => "email@email.com",
-      :password => "password"
+  let(:team) {
+    Team.create(
+      :name => "Team 1"
     )
   }
 
@@ -23,16 +21,16 @@ RSpec.describe PracticeUser, :type => :model do
     )
   }
 
-  it "is valid with a user_id and a game_id" do
-    expect(practice_user).to be_valid
+  it "is valid with a team_id and a game_id" do
+    expect(team_practice).to be_valid
   end
 
   it "belongs to one practice" do
-    expect(practice_user.practice).to eq(practice)
+    expect(team_practice.practice).to eq(practice)
   end
 
-  it "belongs to one user" do
-    expect(practice_user.user).to eq(user)
+  it "belongs to one team" do
+    expect(team_practice.team).to eq(team)
   end
 
 end
