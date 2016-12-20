@@ -1,0 +1,12 @@
+<h1><%= @team.name%>'s Schedule</h1>
+
+<h4>Practices:</h4>
+<table>
+  <tr>
+    <th><strong>Date and Time</strong></th>
+    <th><strong>Location:</strong></th>
+  <tr>
+
+    <%= render partial: 'practices/practice', collection: current_user.practices, as: :practice %>
+
+</table>

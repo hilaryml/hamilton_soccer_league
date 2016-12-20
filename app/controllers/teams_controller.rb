@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :schedule, :edit, :update, :destroy]
 
   def index
     @teams = Team.all
@@ -9,6 +9,9 @@ class TeamsController < ApplicationController
     unless authorize @team
       redirect_to teams_path
     end
+  end
+
+  def schedule
   end
 
   def new

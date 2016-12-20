@@ -2,6 +2,7 @@
 
 <p><strong>Email:</strong> <%= @user.email %></p>
 
-<p>Click <%= link_to "here", team_games_path(@user.team) %> to see your upcoming games.</p>
-
-<p>Click <%= link_to "here", team_practices_path(@user.team) %> to see your upcoming practices.</p>
+<%= form_tag("/teams/schedule") do %>
+   <%= hidden_field_tag :id, @user.team.id %>
+   <%= submit_tag "Team Schedule" %>
+<% end %>
