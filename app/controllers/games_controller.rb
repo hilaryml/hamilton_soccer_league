@@ -1,12 +1,17 @@
 class GamesController < ApplicationController
 
-  def show
-  end
-
   def new
+    @game = Game.new
   end
 
   def create
+    @game = Game.new(game_params)
+    if authorize @game
+      @game.save
+      redirect to teams_schedule_path(@game.team)
+    else
+      redirect to teams_schedule_path(@game.team)
+    end
   end
 
   def edit
