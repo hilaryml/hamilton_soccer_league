@@ -1,5 +1,5 @@
 <tr>
-  <td><%= practice.date %></td>
-  <td><%= practice.time %></td>
+  <td><%= practice.date.strftime("%B %-d") %></td>
+  <td><%= practice.time.strftime("%I:%M %P") %></td>
   <td><%= practice.location %></td>
 </tr>
