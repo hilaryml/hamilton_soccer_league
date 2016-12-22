@@ -1,4 +1,4 @@
 class Practice < ActiveRecord::Base
-  has_many :practice_users
-  has_many :players, through: :practice_users
+  has_many :team_practices
+  has_many :teams, through: :team_practices
 end

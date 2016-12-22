@@ -1,4 +1,4 @@
 class Game < ActiveRecord::Base
-  has_many :game_users
-  has_many :players, through: :game_users
+  has_many :team_games
+  has_many :teams, through: :team_games
 end
