@@ -14,14 +14,16 @@
 ActiveRecord::Schema.define(version: 20161219002402) do
 
   create_table "games", force: :cascade do |t|
-    t.datetime "datetime"
+    t.date     "date"
+    t.time     "time"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "practices", force: :cascade do |t|
-    t.datetime "datetime"
+    t.date     "date"
+    t.time     "time"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

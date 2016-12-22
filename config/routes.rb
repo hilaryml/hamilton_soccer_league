@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :games
     resources :practices
   end
-
+  
   post 'teams/schedule' => 'teams#schedule'
 
   root 'application#welcome'

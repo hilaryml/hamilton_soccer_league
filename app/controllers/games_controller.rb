@@ -5,12 +5,12 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
-    if authorize @game
-      @game.save
-      redirect to teams_schedule_path(@game.team)
+    game = Game.new(game_params)
+    if authorize game
+      game.save
+      redirect_to team_path(current_user.team), alert: "Game successfully created."
     else
-      redirect to teams_schedule_path(@game.team)
+      redirect_to team_path(current_user.team), alert: "You are not authorized to complete this action."
     end
   end
 
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:datetime, :location)
+    params.require(:game).permit(:date, :time, :location)
   end
 
 end

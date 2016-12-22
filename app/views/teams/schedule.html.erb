@@ -8,10 +8,28 @@
 <h4>Practices:</h4>
 <table>
   <tr>
-    <th><strong>Date and Time</strong></th>
-    <th><strong>Location:</strong></th>
-  <tr>
+    <th><strong>Date</strong></th>
+    <th><strong>Time</strong></th>
+    <th><strong>Location</strong></th>
+  </tr>
 
     <%= render partial: 'practices/practice', collection: @team.practices, as: :practice %>
+
+</table>
+
+<h4>Games:</h4>
+<% @team.games.each do |game| %>
+  <%= game.datetime %>
+  <%= game.location %>
+<% end %>
+
+<table>
+  <tr>
+    <th><strong>Date</strong></th>
+    <th><strong>Time</strong></th>
+    <th><strong>Location</strong></th>
+  </tr>
+
+    <%= render partial: 'games/game', collection: @team.games, as: :game %>
 
 </table>

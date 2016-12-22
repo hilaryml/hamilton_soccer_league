@@ -1,10 +1,10 @@
 <%= form_for game, url: "/teams/#{current_user.team_id}/games" do |f| %>
 
   <%= f.label "Date" %>
-  <%= f.date_select :datetime %><br></br>
+  <%= f.date_select :date %><br></br>
 
   <%= f.label "Time" %>
-  <%= f.time_select :datetime %><br></br>
+  <%= f.time_select :time %><br></br>
 
   <%= f.label :location %>
   <%= f.text_field :location %><br></br>
