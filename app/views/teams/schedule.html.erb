@@ -1,5 +1,10 @@
 <h1><%= @team.name%>'s Schedule</h1>
 
+<% if current_user.coach? %>
+  <%= link_to "New Practice", new_team_practice_path(@team.id) %>
+  <%= link_to "New Game", new_team_game_path(@team.id) %>
+<% end %>
+
 <h4>Practices:</h4>
 <table>
   <tr>
