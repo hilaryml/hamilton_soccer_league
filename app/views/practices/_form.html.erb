@@ -1,0 +1,14 @@
+<%= form_for practice, url: "/teams/#{current_user.team_id}/practices" do |f| %>
+
+  <%= f.label "Date" %>
+  <%= f.date_select :date %><br></br>
+
+  <%= f.label "Time" %>
+  <%= f.time_select :time %><br></br>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %><br></br>
+
+  <%= f.submit %>
+
+<% end %>
