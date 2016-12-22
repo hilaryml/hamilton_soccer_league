@@ -23,4 +23,10 @@ class GamesController < ApplicationController
   def destroy
   end
 
+  private
+
+  def game_params
+    params.require(:game).permit(:datetime, :location)
+  end
+
 end
