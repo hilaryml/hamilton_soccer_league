@@ -25,12 +25,16 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.new(team_params)
-    if authorize team
-      team.save
-      redirect_to team_path(team)
+    @team = Team.new(team_params)
+    if @team.valid?
+      if authorize @team
+        @team.save
+        redirect_to team_path(@team), alert: "Team successfully created."
+      else
+        redirect_to new_team_path, alert: "You are not authorized to complete this action."
+      end
     else
-      redirect_to new_team_path
+      render :new
     end
   end
 
