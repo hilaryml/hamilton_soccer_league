@@ -5,6 +5,8 @@ class Team < ActiveRecord::Base
   has_many :team_practices
   has_many :practices, through: :team_practices
 
+  validates :name, presence: true
+
   def players
     self.users.where(role: 0)
   end
