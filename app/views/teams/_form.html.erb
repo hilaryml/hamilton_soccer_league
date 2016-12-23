@@ -1,0 +1,17 @@
+<%= form_for team do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%=f.fields_for :players do |player| %>
+    <%= player.label :name %>
+    <%= player.text_field :name %>
+
+    <%= player.label :email %>
+    <%= player.text_field :email %>
+
+    <%= player.label :password %>
+    <%= player.password :password %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
