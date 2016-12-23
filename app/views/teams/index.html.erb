@@ -1,4 +1,9 @@
 <h1>U10 Team Index</h1>
+
+<%= if current_user.coach? %>
+  <%= link_to "Add your team", new_team_path %>
+<% end %>
+
 <% @teams.each do |team| %>
   <p><strong>Team Name:</strong> <%= team.name %></p>
   <p><strong>Coach:</strong> <%= team.coach_name %></p>
