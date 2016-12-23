@@ -5,13 +5,17 @@ class PracticesController < ApplicationController
   end
 
   def create
-    practice = Practice.new(practice_params)
-    if authorize practice
-      current_user.team.practices << practice
-      practice.save
-      redirect_to team_path(current_user.team), alert: "Practice successfully created."
+    @practice = Practice.new(practice_params)
+    if @practice.valid?
+      if authorize @practice
+        current_user.team.practices << practice
+        @practice.save
+        redirect_to team_path(current_user.team), alert: "Practice successfully created."
+      else
+        redirect_to team_path(current_user.team), alert: "You are not authorized to complete this action."
+      end
     else
-      redirect_to team_path(current_user.team), alert: "You are not authorized to complete this action."
+      render :new
     end
   end
 
