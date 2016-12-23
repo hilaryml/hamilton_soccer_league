@@ -8,9 +8,10 @@ class Team < ActiveRecord::Base
   validates :name, presence: true
 
 	def users_attributes=(users_attributes)
-    users_attributes.each do |user, attributes|
-		    team_user = User.find_or_create_by(email: user.email)
-		    team_user.update(user)
+    users_attributes.each do |i, user_attributes|
+		    team_user = self.users.build(user_attributes)
+        #User.find_or_create_by(user_attributes.name)
+        team_user.update(team_id: self.id)
 		    self.users << team_user
     end
 	end

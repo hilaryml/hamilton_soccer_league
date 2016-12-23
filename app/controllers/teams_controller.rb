@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
     if @team.valid?
       if authorize @team
         @team.save
-        redirect_to teams_path, alert: "Team successfully created."
+        redirect_to team_path(@team), alert: "Team successfully created."
       else
         redirect_to new_team_path, alert: "You are not authorized to complete this action."
       end
@@ -51,17 +51,11 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(
       :name,
-      coach_attributes: [
+      users_attributes: [
         :name,
         :email,
         :password,
-        :password_confirmation
-      ],
-      players_attributes: [
-        :name,
-        :email,
-        :password,
-        :password_confirmation
+        :role
       ]
     )
   end

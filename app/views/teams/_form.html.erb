@@ -29,8 +29,8 @@
     <%= user.label :email %>
     <%= user.text_field :email %><br>
 
-    <%= user.label "Check box if this is the coach." %>
-    <%= user.check_box :role %><br>
+    <%= user.label :role %>
+    <%= user.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
 
     <%= user.label :password %>
     <%= user.password_field :password %><br></br>

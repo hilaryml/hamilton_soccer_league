@@ -19,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= f.label "Check box if you are a coach." %><br />
-    <%= f.check_box :role %>
+    <%= user.label :role %>
+    <%= user.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
   </div>
 
   <div class="field">
