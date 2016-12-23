@@ -2,15 +2,36 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
 
-  <%=f.fields_for :players do |player| %>
-    <%= player.label :name %>
-    <%= player.text_field :name %>
+  <%=f.fields_for :coach do |coach| %>
 
-    <%= player.label :email %>
-    <%= player.text_field :email %>
+    <%= coach.label :name %>
+    <%= coach.text_field :name %>
 
-    <%= player.label :password %>
-    <%= player.password :password %>
+    <%= coach.label :email %>
+    <%= coach.text_field :email %>
+
+    <%= coach.label :password %>
+    <%= coach.password :password %>
+
+    <%= player.label :password_confirmation %>
+    <%= player.password :password_confirmation %>
+
+  <% end %>
+
+  <%= f.fields_for :players do |player| %>
+
+   <%= player.label :name %>
+   <%= player.text_field :name %>
+
+   <%= player.label :email %>
+   <%= player.text_field :email %>
+
+   <%= player.label :password %>
+   <%= player.password :password %>
+
+   <%= player.label :password_confirmation %>
+   <%= player.password :password_confirmation %>
+
   <% end %>
 
   <%= f.submit %>
