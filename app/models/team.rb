@@ -7,18 +7,11 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def coach_attributes=(coach)
-		team_coach = User.find_or_create_by(email: coach.email)
-		team_coach.update(coach)
-		team_coach.update(role: 1)
-		self.users << team_coach
-	end
-
-	def players_attributes=(players)
-    players.each do |player, attributes|
-		    team_player = User.find_or_create_by(email: player.email)
-		    team_player.update(player)
-		    self.users << team_player
+	def users_attributes=(users_attributes)
+    users_attributes.each do |user, attributes|
+		    team_user = User.find_or_create_by(email: user.email)
+		    team_user.update(user)
+		    self.users << team_user
     end
 	end
 

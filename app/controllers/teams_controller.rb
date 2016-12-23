@@ -16,20 +16,15 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
-    @coach = @team.users.build
-	  @players = 15.times do
-		     @team.users.build
-    end
+	  @users = 15.times { @team.users.build }
 	end
-
-  end
 
   def create
     @team = Team.new(team_params)
     if @team.valid?
       if authorize @team
         @team.save
-        redirect_to team_path(@team), alert: "Team successfully created."
+        redirect_to teams_path, alert: "Team successfully created."
       else
         redirect_to new_team_path, alert: "You are not authorized to complete this action."
       end
@@ -61,7 +56,7 @@ class TeamsController < ApplicationController
         :email,
         :password,
         :password_confirmation
-      ]
+      ],
       players_attributes: [
         :name,
         :email,

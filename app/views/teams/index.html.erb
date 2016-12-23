@@ -1,6 +1,6 @@
 <h1>U10 Team Index</h1>
 
-<%= if current_user.coach? %>
+<% if current_user.coach? %>
   <%= link_to "Add your team", new_team_path %>
 <% end %>
 

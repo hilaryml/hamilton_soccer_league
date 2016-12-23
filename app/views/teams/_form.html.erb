@@ -16,39 +16,24 @@
   <% end %>
 
   <div class="field<%= ' field_with_errors' if team.errors[:name].any? %>">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label "Team Name" %>
+    <%= f.text_field :name %><br></br>
   </div>
 
-  <%=f.fields_for :coach do |coach| %>
+  <h4>Coach and Player Info:</h4>
+  <%=f.fields_for :users do |user| %>
 
-    <%= coach.label :name %>
-    <%= coach.text_field :name %>
+    <%= user.label :name %>
+    <%= user.text_field :name %><br>
 
-    <%= coach.label :email %>
-    <%= coach.text_field :email %>
+    <%= user.label :email %>
+    <%= user.text_field :email %><br>
 
-    <%= coach.label :password %>
-    <%= coach.password :password %>
+    <%= user.label "Check box if this is the coach." %>
+    <%= user.check_box :role %><br>
 
-    <%= player.label :password_confirmation %>
-    <%= player.password :password_confirmation %>
-
-  <% end %>
-
-  <%= f.fields_for :players do |player| %>
-
-   <%= player.label :name %>
-   <%= player.text_field :name %>
-
-   <%= player.label :email %>
-   <%= player.text_field :email %>
-
-   <%= player.label :password %>
-   <%= player.password :password %>
-
-   <%= player.label :password_confirmation %>
-   <%= player.password :password_confirmation %>
+    <%= user.label :password %>
+    <%= user.password_field :password %><br></br>
 
   <% end %>
 
