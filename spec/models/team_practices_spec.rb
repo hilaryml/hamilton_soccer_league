@@ -16,8 +16,9 @@ RSpec.describe TeamPractice, :type => :model do
 
   let(:practice) {
     Practice.create(
-    datetime: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-    location: "City Park"
+    :date => "#{Date.today}",
+    :time => "#{Time.now}",
+    :location => "City Park"
     )
   }
 

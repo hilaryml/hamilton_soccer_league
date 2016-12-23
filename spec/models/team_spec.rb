@@ -9,15 +9,17 @@ RSpec.describe Team, type: :model do
 
   let(:game) {
     Game.create(
-    datetime: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-    location: "City Park"
+    :date => "#{Date.today}",
+    :time => "#{Time.now}",
+    :location => "City Park"
     )
   }
 
   let(:practice) {
     Practice.create(
-      :datetime => "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-      :location => "City Park"
+    :date => "#{Date.today}",
+    :time => "#{Time.now}",
+    :location => "City Park"
     )
   }
 

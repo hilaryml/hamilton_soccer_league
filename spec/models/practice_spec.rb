@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Practice, :type => :model do
   let(:practice) {
     Practice.create(
-      :datetime => "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}"
+    :date => "#{Date.today}",
+    :time => "#{Time.now}",
+    :location => "City Park"
     )
   }
 
