@@ -14,10 +14,12 @@ class Team < ActiveRecord::Base
 		self.users << team_coach
 	end
 
-	def player_attributes=(player)
-		team_player = User.find_or_create_by(email: player.email)
-		team_player.update(player)
-		self.users << team_player
+	def players_attributes=(players)
+    players.each do |player, attributes|
+		    team_player = User.find_or_create_by(email: player.email)
+		    team_player.update(player)
+		    self.users << team_player
+    end
 	end
 
   def players

@@ -16,6 +16,12 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    @coach = @team.users.build
+	  @players = 15.times do
+		     @team.users.build
+    end
+	end
+
   end
 
   def create
@@ -41,6 +47,24 @@ class TeamsController < ApplicationController
 
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def team_params
+    params.require(:team).permit(
+      :name,
+      coach_attributes: [
+        :name,
+        :email,
+        :password,
+        :password_confirmation
+      ]
+      players_attributes: [
+        :name,
+        :email,
+        :password,
+        :password_confirmation
+      ]
+    )
   end
 
 end
