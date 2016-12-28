@@ -1,39 +1,22 @@
 <%= form_for team do |f| %>
 
-  <% if team.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(team.errors.count, "error") %>
-        prohibited this team from being saved:
-      </h2>
-
-      <ul>
-      <% team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field<%= ' field_with_errors' if team.errors[:name].any? %>">
     <%= f.label "Team Name" %>
     <%= f.text_field :name %><br></br>
-  </div>
 
   <h4>Coach and Player Info:</h4>
   <%=f.fields_for :users do |user| %>
 
-    <%= user.label :name %>
-    <%= user.text_field :name %><br>
+      <%= user.label :name %>
+      <%= user.text_field :name %><br>
 
-    <%= user.label :email %>
-    <%= user.text_field :email %><br>
+      <%= user.label :email %>
+      <%= user.text_field :email %><br>
 
-    <%= user.label :role %>
-    <%= user.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
+      <%= user.label :role %>
+      <%= user.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
 
-    <%= user.label :password %>
-    <%= user.password_field :password %><br></br>
+      <%= user.label :password %>
+      <%= user.password_field :password %><br></br>
 
   <% end %>
 

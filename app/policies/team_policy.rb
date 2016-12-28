@@ -1,18 +1,18 @@
 class TeamPolicy < ApplicationPolicy
 
   def show?
-    user.coach? || record.users.include?(user)
+    user.try(:coach) || record.users.include?(user)
   end
 
   def create?
-    user.coach?
+    user.try(:coach)
   end
 
   def update?
-    user.coach?
+    user.try(:coach)
   end
 
   def destroy?
-    user.coach?
+    user.try(:coach)
   end
 end
