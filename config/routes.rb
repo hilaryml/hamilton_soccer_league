@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
 
   resources :teams do
     resources :users
     resources :games
     resources :practices
   end
-  
+
   post 'teams/schedule' => 'teams#schedule'
 
   root 'application#welcome'
