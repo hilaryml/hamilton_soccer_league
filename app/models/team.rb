@@ -23,4 +23,12 @@ class Team < ActiveRecord::Base
   def coach_name
     self.users.detect { |user| user.coach? }.name
   end
+
+  def self.by_wins(wins)
+    order(wins: :desc)
+  end
+
+  def self.top_five_teams
+    by_wins.limit(5)
+  end
 end

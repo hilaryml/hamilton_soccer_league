@@ -1,5 +1,10 @@
 <h1>U10 Team Index</h1>
 
+<%= form_tag("/teams", method: "get") do %>
+  <%= select_tag "team standings", options_for_select(["standings", "top five teams"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %><br></br>
+
 <% if current_user.coach? %>
   <%= link_to "Add your team", new_team_path %>
 <% end %>

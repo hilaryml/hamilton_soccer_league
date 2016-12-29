@@ -3,6 +3,13 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.all
+    if params[:team] == "standings"
+      @teams = Team.by_wins
+    elsif params[:team] == "top five teams"
+      @teams = Team.top_five_teams
+    else
+      @teams = Team.all
+    end
   end
 
   def show
