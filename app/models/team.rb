@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :wins, -> { order(wins: :desc) }
+
 	def users_attributes=(users_attributes)
     users_attributes.each do |i, user_attributes|
 		    team_user = self.users.build(user_attributes)
@@ -24,11 +26,11 @@ class Team < ActiveRecord::Base
     self.users.detect { |user| user.coach? }.name
   end
 
-  def self.by_wins(wins)
-    order(wins: :desc)
-  end
+#  def self.by_wins(wins)
+#    order(wins: :desc)
+#  end
 
   def self.top_five_teams
-    by_wins.limit(5)
+    wins.limit(5)
   end
 end

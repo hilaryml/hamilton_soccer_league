@@ -1,15 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 team_counter = 0
 
-5.times do
+6.times do
 
-  Team.create(name: 'Team ' + "#{team_counter + 1}")
+  Team.create(name: 'Team ' + "#{team_counter + 1}", wins: team_counter)
 
   User.create(
     name: 'Coach ' + "#{team_counter + 1}",
@@ -35,3 +28,33 @@ team_counter = 0
 
   team_counter += 1
 end
+
+TeamGame.create(team_id: 1, game_id: 1)
+TeamGame.create(team_id: 2, game_id: 1)
+Game.create(date: Date.today, time: Time.now, location: "City Park")
+
+TeamGame.create(team_id: 3, game_id: 2)
+TeamGame.create(team_id: 4, game_id: 2)
+Game.create(date: Date.tomorrow, time: Time.now, location: "City Park")
+
+TeamGame.create(team_id: 5, game_id: 3)
+TeamGame.create(team_id: 6, game_id: 3)
+Game.create(date: Date.yesterday, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 1, practice_id: 1)
+Practice.create(date: Date.tomorrow, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 2, practice_id: 2)
+Practice.create(date: Date.yesterday, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 3, practice_id: 3)
+Practice.create(date: Date.today, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 4, practice_id: 4)
+Practice.create(date: Date.today, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 5, practice_id: 5)
+Practice.create(date: Date.tomorrow, time: Time.now, location: "City Park")
+
+TeamPractice.create(team_id: 6, practice_id: 6)
+Practice.create(date: Date.tomorrow, time: Time.now, location: "City Park")
