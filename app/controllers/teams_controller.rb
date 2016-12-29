@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
   def update
     if authorize @team
       @team.update(team_params)
-      redirect_to team_path(@team), alert: "Successfully updated team."
+      redirect_to team_path(@team), alert: "Team successfully updated."
     else
       redirect_to teams_path, alert: "You are not authorized to complete this action."
     end
