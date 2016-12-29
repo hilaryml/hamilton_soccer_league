@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label "Team" %><br />
-    <%= f.collection_select :team, Team.all, :id, :name %>
+    <%= f.collection_select :team_id, Team.all, :id, :name %>
   </div>
 
   <div class="field">
@@ -39,11 +39,6 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
