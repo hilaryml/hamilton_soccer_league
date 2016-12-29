@@ -19,15 +19,6 @@ class PracticesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   private
 
   def practice_params
