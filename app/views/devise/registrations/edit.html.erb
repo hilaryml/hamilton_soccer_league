@@ -19,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= user.label :role %>
-    <%= user.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
+    <%= f.label :role %>
+    <%= f.select(:role, [['Player', 'player'], ['Coach', 'coach']]) %><br>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
