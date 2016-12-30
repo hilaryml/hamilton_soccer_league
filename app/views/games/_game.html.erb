@@ -1,5 +1,5 @@
 <tr>
-  <td><%= game.date.strftime("%B %-d") %></td>
-  <td><%= game.time.strftime("%I:%M %P") %></td>
+  <td><%= game.format_date %></td>
+  <td><%= game.format_time %></td>
   <td><%= game.location %></td>
 </tr>

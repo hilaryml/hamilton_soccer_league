@@ -2,7 +2,7 @@
 
 <h4>Teams: <%= @game.teams %></h4><!-- maybe add a team model method that shows team1 vs team2 -->
 <h4>Location: <%= @game.location %></h4>
-<h4>Date and Time: <%= @game.date.strftime("%B %-d") %> at <%= @game.time.strftime("%I:%M %P") %></h4>
+<h4>Date and Time: <%= @game.format_date %> at <%= @game.format_time %></h4>
 <!-- maybe make game model methods that format the date and time -->
 <h4>Comments:</h4>
 

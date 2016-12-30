@@ -9,4 +9,12 @@ class Game < ActiveRecord::Base
   validates :time, presence: true
   validates :location, presence: true
 
+  def format_date
+    self.date.strftime("%B %-d")
+  end
+
+  def format_time
+    self.time.strftime("%I:%M %P")
+  end
+
 end
