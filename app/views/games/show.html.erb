@@ -6,7 +6,6 @@
 
 <h4>Comments:</h4>
 
-<%= link_to "Add a new comment", new_comment_path %>
+<%= render partial: 'comments/form', locals: { comment: @game.comments.build } %>
 
-<!-- iterate through comments here, make a partial for comments
-add a link to add a new comment -->
+<%= render partial: 'comments/comment', collection: @game.comments, as: :comment %>
