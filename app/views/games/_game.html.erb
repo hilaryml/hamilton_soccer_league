@@ -2,4 +2,5 @@
   <td><%= game.format_date %></td>
   <td><%= game.format_time %></td>
   <td><%= game.location %></td>
+  <td><%= link_to "Game Link", team_game_path(current_user.team, game) %></td>
 </tr>
