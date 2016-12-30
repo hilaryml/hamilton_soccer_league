@@ -17,4 +17,8 @@ class Game < ActiveRecord::Base
     self.time.strftime("%I:%M %P")
   end
 
+  def versus
+    "#{self.teams[0].name} vs. #{self.teams[1].name}"
+  end
+
 end

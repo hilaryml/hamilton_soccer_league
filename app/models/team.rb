@@ -29,4 +29,5 @@ class Team < ActiveRecord::Base
   def self.top_five_teams
     wins.limit(5)
   end
+
 end

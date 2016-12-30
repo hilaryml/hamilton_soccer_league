@@ -1,9 +1,9 @@
 <h1>Game <%= @game.id %></h1>
 
-<h4>Teams: <%= @game.teams %></h4><!-- maybe add a team model method that shows team1 vs team2 -->
+<h4>Teams: <%= @game.versus %></h4>
 <h4>Location: <%= @game.location %></h4>
 <h4>Date and Time: <%= @game.format_date %> at <%= @game.format_time %></h4>
-<!-- maybe make game model methods that format the date and time -->
+
 <h4>Comments:</h4>
 
 <!-- iterate through comments here, make a partial for comments
