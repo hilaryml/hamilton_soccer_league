@@ -1,12 +1,29 @@
 <h1>Edit Team Form</h1>
 
 <%= form_for @team do |f| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@team.errors.count, "error") %>
+        prohibited this team from being saved:
+      </h2>
 
-    <%= f.label "Team Name" %>
-    <%= f.text_field :name %><br></br>
+      <ul>
+        <% @team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-    <%= f.label "Team Wins" %>
-    <%= f.text_field :wins %><br></br>
+    <div class="field<%= 'field_with_errors' if @team.errors[:name].any? %>">
+      <%= f.label "Team Name" %>
+      <%= f.text_field :name %><br></br>
+    </div>
+
+    <div class="field<%= 'field_with_errors' if @team.errors[:wins].any? %>">
+      <%= f.label "Team Wins" %>
+      <%= f.text_field :wins %><br></br>
+    </div>
 
   <%= f.submit %>
 <% end %>

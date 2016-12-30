@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.all
-    
+
     if params["team standings"] == "standings"
       @teams = Team.wins
     elsif params["team standings"] == "top five teams"
