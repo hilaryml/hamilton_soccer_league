@@ -1,4 +1,3 @@
-<!-- make this a partial that will show up above the comments -->
 <h1>New Comment Form</h1>
 
 <%= form_for comment do |f| %>
@@ -22,7 +21,8 @@
     <%= f.text_area :content %>
   </div>
 
-  <!-- hidden fields for game_id and user_id -->
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :game_id %>
 
   <%= f.submit %>
 
