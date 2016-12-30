@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   enum role: [:player, :coach]
 
   belongs_to :team
+  has_many :comments
+  has_many :games, through: :comments
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
