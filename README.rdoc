@@ -1,28 +1,37 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Hamilton Soccer League
+##The Official Website for U10 teams
 
-Things you may want to cover:
+##About
+This website is used to provide coaches, players, and parents with the information
+they need to compete in the Hamilton Soccer League.
 
-* Ruby version
+Coaches are able to add their teams, consisting of a team name as well as the
+player info supplied by the League.
 
-* System dependencies
+Players will then be sent their temporary passwords so that they can log on to
+change their password.
 
-* Configuration
+Coaches will also be able to add their teams' practices and games which will show
+up for both players and coaches on their team schedule. The team schedule will
+include clickable links to each game's info page. The info page will have a spot
+for both players and coaches to leave comments on game highlights, etc.
 
-* Database creation
+There is a team list that will feature a filter allowing users to sort the teams
+by their overall standings, as well as a filter which will show the top five teams
+in descending order.
 
-* Database initialization
+Coaches will be required to update their teams' win number after each winning game
+in order for this to be reflected in the standings.
 
-* How to run the test suite
+##Installation
 
-* Services (job queues, cache servers, search engines, etc.)
+In order to use this app, run rake db:migrate and rake db:seed if you would like
+to start out with dummy data.
 
-* Deployment instructions
+Run the server with rails s
 
-* ...
+## License
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
