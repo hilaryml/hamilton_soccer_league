@@ -5,7 +5,7 @@ Specs:
 - [x] Include at least one has_many relationship - A Team has_many users
 - [x] Include at least one belongs_to relationship - A User belongs_to a Team
 - [x] Include at least one has_many through relationship - A Team has_many Games through TeamGames, and many Practices through TeamPractices
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
+- [x] The "through" part of the has_many through includes at least one user submittable attribute - comments.content
 - [x] Include reasonable validations for simple model objects - Team, Game, Practice, Comment
 - [X] Include a class level ActiveRecord scope method - Team.top_five_teams URL: /teams?utf8=%E2%9C%93&team+standings=top+five+teams&commit=Filter
 - [x] Include a nested form writing to an associated model using a custom attribute writer - URL: /teams/new, User
