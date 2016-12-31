@@ -58,3 +58,6 @@ Practice.create(date: Date.tomorrow, time: Time.now, location: "City Park")
 
 TeamPractice.create(team_id: 6, practice_id: 6)
 Practice.create(date: Date.tomorrow, time: Time.now, location: "City Park")
+
+Comment.create(user_id: 1, game_id: 1)
+Comment.create(user_id: 2, game_id: 1)
