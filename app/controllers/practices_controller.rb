@@ -8,7 +8,7 @@ class PracticesController < ApplicationController
     @practice = Practice.new(practice_params)
     if @practice.valid?
       if authorize @practice
-        current_user.team.practices << practice
+        current_user.team.practices << @practice
         @practice.save
         redirect_to team_path(current_user.team), alert: "Practice successfully created."
       else
