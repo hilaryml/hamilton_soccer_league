@@ -1,3 +1,5 @@
+/*///NAVBAR///*/
+
 div.navbar {
   border-bottom: #666 2px solid;
   color: #5a5a5a;
@@ -19,6 +21,12 @@ div.pull-right {
   float: right;
 }
 
+div.pull-left {
+  float: left;
+}
+
+/*///CONTENT///*/
+
 div.wrapper {
   width: 55%;
   margin: 0 auto;
@@ -38,6 +46,40 @@ div.content {
   overflow: auto;
 }
 
-div.img {
+img {
+  height: 500px;
+  width: 700px;
+}
 
+table {
+  display: inline-block;
+}
+
+td {
+  padding: 5px;
+}
+
+h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #444;
+  font-kerning: normal;
+}
+
+h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #444;
+  font-kerning: normal;
+}
+
+a {
+  color: #494;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+a:hover {
+  text-decoration: underline;
 }
