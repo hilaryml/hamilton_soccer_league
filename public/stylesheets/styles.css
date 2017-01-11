@@ -1,0 +1,43 @@
+div.navbar {
+  border-bottom: #666 2px solid;
+  color: #5a5a5a;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+div.container {
+  color: #fff;
+  font-weight: 700;
+  height: 2.5em;
+  margin-top: 40px;
+  margin-right: 30px;
+}
+
+div.pull-right {
+  float: right;
+}
+
+div.wrapper {
+  width: 55%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, .85);
+  z-index: 0;
+  margin-top: 100px;
+  text-align: center;
+}
+
+div.content {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 60px;
+  overflow: auto;
+}
+
+div.img {
+
+}

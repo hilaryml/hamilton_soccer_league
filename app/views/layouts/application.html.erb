@@ -5,14 +5,24 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
   </head>
   <body>
+    <div class="navbar">
+      <div class="container">
+        <%= render 'layouts/navigation' %>
+      </div>
+    </div>
 
-    <%= render 'layouts/navigation' %>
+    <div class="messages">
+      <%= render 'layouts/messages' %>
+    </div>
 
-    <%= render 'layouts/messages' %>
-    
-    <%= yield %>
+    <div class="wrapper">
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
 
   </body>
 </html>

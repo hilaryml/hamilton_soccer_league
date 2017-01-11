@@ -12,7 +12,6 @@ class Team < ActiveRecord::Base
 	def users_attributes=(users_attributes)
     users_attributes.each do |i, user_attributes|
 		    team_user = self.users.build(user_attributes)
-        #User.find_or_create_by(user_attributes.name)
         team_user.update(team_id: self.id)
 		    self.users << team_user
     end
