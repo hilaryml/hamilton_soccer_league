@@ -13,6 +13,7 @@
 
 <%= render partial: 'comments/comment', collection: @game.comments, as: :comment %>
 
+<!-- I will need to take this js out and place it in assets -->
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function() {
@@ -30,27 +31,31 @@ $(function () {
 
       var date = new Date(data["date"]);
       var day = date.getDate();
-      var month = date.getMonth();
-      //will need to iterate through these and grab the month based on the number
-      //returned by my month variable
-      var months = [
-        January,
-        February,
-        March,
-        April,
-        May,
-        June,
-        July,
-        August,
-        September,
-        October,
-        November,
-        December
-      ]
+      var monthNum = date.getMonth();
 
-      //$(".authorName").text(jsonData["author"]["name"]);
-      //$(".postTitle").text(jsonData["title"]);
-      //$(".postBody").text(jsonData["description"]);
+      var months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      var month = months[monthNum];
+
+      var time = new Date(data["time"]);
+      var hour = time.getHours(); //will need to convert to 12 hr clock...
+      var minutes = time.getMinutes();
+
+      var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
+
       // re-set the id to current on the link
       //$(".js-next").attr("data-id", jsonData["id"]);
     });
