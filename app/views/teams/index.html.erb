@@ -10,7 +10,5 @@
 <% end %>
 
 <% @teams.each do |team| %>
-  <p><strong>Team Name:</strong> <%= team.name %></p>
-  <p><strong>Coach:</strong> <%= team.coach_name %></p>
-  <br>
+  <%= render partial: "teams", locals: {team: team}
 <% end %>
