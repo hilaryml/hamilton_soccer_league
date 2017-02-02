@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
 
-  def show
-    @game = Game.find(params[:id])
-  end
+  #def show
+  #  @game = Game.find(params[:id])
+  #end
 
   def new
     @game = Game.new
@@ -23,10 +23,13 @@ class GamesController < ApplicationController
     end
   end
 
-  def game_data
-    game = Game.find(params[:id])
-    render json: game.to_json(only: [:id, :date, :time, :location],
-                              include: [ :comments, teams: { only: [:name]}])
+  def show
+    @game = Game.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @game.to_json(only: [:id, :date, :time, :location],
+                                            include: [ :comments, teams: { only: [:name]}]) }
+    end
   end
 
   private
