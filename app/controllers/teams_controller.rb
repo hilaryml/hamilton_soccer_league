@@ -57,7 +57,7 @@ class TeamsController < ApplicationController
   end
 
   def players
-    render plain: @team.players
+    render json: @team.players
   end
 
   private
