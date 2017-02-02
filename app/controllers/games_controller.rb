@@ -23,6 +23,11 @@ class GamesController < ApplicationController
     end
   end
 
+  def game_data
+    game = Game.find(params[:id])
+    render json: game.to_json(include: [:teams, :comments])
+  end
+
   private
 
   def game_params
