@@ -1,7 +1,7 @@
 <!-- make 'next' button for games -->
 <h1>Game <%= @game.id %></h1>
 
-<a href="#" class="js-next" data-id="<%=@game.id%>">Next Game</a>
+<a href="#" class="js-next" data-team="<%=current_user.team.id%>" data-id="<%=@game.id%>">Next Game</a>
 
 <h4>Teams: <%= @game.versus %></h4>
 <h4>Location: <%= @game.location %></h4>
@@ -12,3 +12,21 @@
 <%= render partial: 'comments/form', locals: { comment: @game.comments.build } %>
 
 <%= render partial: 'comments/comment', collection: @game.comments, as: :comment %>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    var team = parseInt($(".js-next").attr("data-team"));
+    $.get("/teams/" + team + "/games/" + nextId + "/game_data", function(data) {
+      var jsonData = JSON.parse(data);
+      console.log(jsonData);
+      //$(".authorName").text(jsonData["author"]["name"]);
+      //$(".postTitle").text(jsonData["title"]);
+      //$(".postBody").text(jsonData["description"]);
+      // re-set the id to current on the link
+      //$(".js-next").attr("data-id", jsonData["id"]);
+    });
+  });
+});
+</script>
