@@ -1,4 +1,7 @@
+<!-- make 'next' button for games -->
 <h1>Game <%= @game.id %></h1>
+
+<a href="#" class="js-next" data-id="<%=@game.id%>">Next Game</a>
 
 <h4>Teams: <%= @game.versus %></h4>
 <h4>Location: <%= @game.location %></h4>
