@@ -30,6 +30,11 @@
     <%= f.text_field :location %><br></br>
   </div>
 
+  <div class="field<%= ' field_with_errors' if game.errors[:teams].any? %>">
+    <%= f.label :teams %>
+    <%= f.collection_check_boxes :team_ids, Team.all, :id, :name %><br></br>
+  </div>
+
   <%= f.submit %>
 
 <% end %>
