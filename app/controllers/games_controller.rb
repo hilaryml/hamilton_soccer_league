@@ -25,7 +25,8 @@ class GamesController < ApplicationController
 
   def game_data
     game = Game.find(params[:id])
-    render json: game.to_json(include: [:teams, :comments])
+    render json: game.to_json(only: [:id, :date, :time, :location],
+                              include: [ :comments, teams: { only: [:name]}])
   end
 
   private
