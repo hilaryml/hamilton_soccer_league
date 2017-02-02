@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :practices
   end
 
+  get '/teams/:id/players', to: 'teams#players'
+
   post 'teams/schedule' => 'teams#schedule'
 
   root 'application#welcome'
