@@ -1,13 +1,13 @@
 <!-- make 'next' button for games -->
-<h1>Game <%= @game.id %></h1>
+<h1 id="gameId">Game <%= @game.id %></h1>
 
-<a href="#" class="js-next" data-team="<%=current_user.team.id%>" data-id="<%=@game.id%>">Next Game</a>
+<a href="#" class="js-next" data-team="<%= current_user.team.id %>" data-id="<%= @game.id %>">Next Game</a>
 
-<h4>Teams: <%= @game.versus %></h4>
-<h4>Location: <%= @game.location %></h4>
-<h4>Date and Time: <%= @game.format_date %> at <%= @game.format_time %></h4><br></br>
+<h4 id="versus">Teams: <%= @game.versus %></h4>
+<h4 id="location">Location: <%= @game.location %></h4>
+<h4 id="dateTime">Date and Time: <%= @game.format_date %> at <%= @game.format_time %></h4><br></br>
 
-<h4>Comments:</h4>
+<h4 id="comments">Comments:</h4>
 
 <%= render partial: 'comments/form', locals: { comment: @game.comments.build } %>
 
@@ -18,9 +18,36 @@ $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     var team = parseInt($(".js-next").attr("data-team"));
-    $.get("/teams/" + team + "/games/" + nextId + "/game_data", function(data) {
-      var jsonData = JSON.parse(data);
-      console.log(jsonData);
+    $.get("/teams/" + team + "/games/" + nextId + ".json", function(data) {
+      console.log(data);
+      //these should be replacing the text within the html tags...
+      $("#id").text(data["id"]);
+
+      var versusText = "Teams: " + data["teams"][0]["name"] + " vs. " + data["teams"][1]["name"];
+      $("#versus").text(versusText);
+
+      $("#location").text("Location: " + data["location"]);
+
+      var date = new Date(data["date"]);
+      var day = date.getDate();
+      var month = date.getMonth();
+      //will need to iterate through these and grab the month based on the number
+      //returned by my month variable
+      var months = [
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December
+      ]
+
       //$(".authorName").text(jsonData["author"]["name"]);
       //$(".postTitle").text(jsonData["title"]);
       //$(".postBody").text(jsonData["description"]);
