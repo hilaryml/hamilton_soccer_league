@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   get '/teams/:id/players', to: 'teams#players'
 
-  get '/teams/:id/games/:id/game_data', to: 'games#game_data'
-
   post 'teams/schedule' => 'teams#schedule'
 
   root 'application#welcome'
