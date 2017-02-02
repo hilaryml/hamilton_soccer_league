@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :schedule, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :schedule, :edit, :update, :destroy, :players]
 
   def index
     @teams = Team.all
@@ -54,6 +54,10 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def players
+    render plain: @team.players
   end
 
   private
