@@ -23,8 +23,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @game.to_json(only: [:id, :date, :time, :location],
-                                            include: [ :comments, teams: { only: [:name]}]) }
+      format.json { render json: @game }
     end
   end
 
