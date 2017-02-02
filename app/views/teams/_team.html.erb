@@ -1,3 +1,6 @@
 <p><strong>Team Name:</strong> <%= team.name %></p>
 <p><strong>Coach:</strong> <%= team.coach_name %></p>
+<div id="team-<%= team.id %>-players"></div>
 <br>
+
+<button class="js-more" data-id="<%= team.id %>”>Players</button>
