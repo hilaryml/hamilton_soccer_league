@@ -5,6 +5,7 @@ $(document).ready(function() {
 function attachNext() {
   $(".js-next").on("click", function(event) {
     event.preventDefault();
+
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     var team = parseInt($(".js-next").attr("data-team"));
     $.get("/teams/" + team + "/games/" + nextId + ".json", function(data) {
@@ -16,32 +17,7 @@ function attachNext() {
 
       $("#location").text("Location: " + data["location"]);
 
-      var date = new Date(data["date"]);
-      var day = date.getDate();
-      var monthNum = date.getMonth();
-
-      var months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
-
-      var month = months[monthNum];
-
-      var time = new Date(data["time"]);
-      var hour = time.getHours(); //will need to convert to 12 hr clock...
-      var minutes = time.getMinutes();
-
-      var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
+      var dateText = getDateText(data);
 
       //comments here
       var comments = "<h4>Comments:</h4>";
@@ -55,3 +31,32 @@ function attachNext() {
     });
   });
 };
+
+function getDateText(data) {
+  var date = new Date(data["date"]);
+  var day = date.getDate();
+  var monthNum = date.getMonth();
+
+  var months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var month = months[monthNum];
+
+  var time = new Date(data["time"]);
+  var hour = time.getHours();
+  var minutes = time.getMinutes();
+
+  var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
+}
