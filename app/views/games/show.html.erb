@@ -6,12 +6,11 @@
 <h4 id="location">Location: <%= @game.location %></h4>
 <h4 id="dateTime">Date and Time: <%= @game.format_date %> at <%= @game.format_time %></h4><br></br>
 
-<h4 id="comments">Comments:</h4>
-
 <%= render partial: 'comments/form', locals: { comment: @game.comments.build } %>
-
-<%= render partial: 'comments/comment', collection: @game.comments, as: :comment %>
-
+<div id="comments">
+  <h4>Comments:</h4>
+  <%= render partial: 'comments/comment', collection: @game.comments, as: :comment %>
+</div>
 <!-- I will need to take this js out and place it in assets -->
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -57,7 +56,7 @@ $(function () {
       var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
 
       //comments here
-      var comments = "Comments: ";
+      var comments = "<h4>Comments:</h4>";
       $.each(data["comments"], function(index, comment) {
         comments += "<p>" + comment.content + "</p>";
       })
@@ -82,8 +81,8 @@ $(function () {
 
       posting.done(function(data) {
         var comment = data;
-        $("#comments").text(comment["content"]);
-      })
+        $("#comments").append(comment["content"]);
+      });
     });
   });
 </script>
