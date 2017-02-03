@@ -16,3 +16,4 @@
 //= require_tree .
 //= require show
 //= require index
+//= require comment
