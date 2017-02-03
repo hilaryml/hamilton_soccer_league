@@ -22,7 +22,7 @@ $(function () {
     $.get("/teams/" + team + "/games/" + nextId + ".json", function(data) {
       console.log(data);
       //these should be replacing the text within the html tags...
-      $("#id").text("Game " + data["id"]);
+      $("#gameId").text("Game " + data["id"]);
 
       var versusText = "Teams: " + data["teams"][0]["name"] + " vs. " + data["teams"][1]["name"];
       $("#versus").text(versusText);
@@ -55,8 +55,13 @@ $(function () {
       var minutes = time.getMinutes();
 
       var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
-      //comments here
 
+      //comments here
+      var comments = "Comments: ";
+      $.each(data["comments"], function(index, comment) {
+        comments += "<p>" + comment.content + "</p>";
+      })
+      $("#comments").html(comments)
 
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
