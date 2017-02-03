@@ -15,7 +15,8 @@
 <!-- I will need to take this js out and place it in assets -->
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", function(event) {
+    event.preventDefault();
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     var team = parseInt($(".js-next").attr("data-team"));
     $.get("/teams/" + team + "/games/" + nextId + ".json", function(data) {
