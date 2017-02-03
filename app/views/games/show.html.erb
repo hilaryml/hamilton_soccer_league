@@ -19,8 +19,7 @@ $(function () {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     var team = parseInt($(".js-next").attr("data-team"));
     $.get("/teams/" + team + "/games/" + nextId + ".json", function(data) {
-      console.log(data);
-      //these should be replacing the text within the html tags...
+      //replace text within html tag
       $("#gameId").text("Game " + data["id"]);
 
       var versusText = "Teams: " + data["teams"][0]["name"] + " vs. " + data["teams"][1]["name"];
