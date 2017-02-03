@@ -7,7 +7,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.valid?
       @comment.save
-      redirect_to team_game_path(current_user.team, @comment.game)
+      respond_to do |format|
+        format.html { redirect_to team_game_path(current_user.team, @comment.game) }
+        format.json { render json: @comment, status: 201 }
+      end
     else
       redirect_to teams_path, alert: "Unsuccessful. Please, try again."
     end
