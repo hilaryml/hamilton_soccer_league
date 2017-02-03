@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require show
-//= require index
-//= require comment
