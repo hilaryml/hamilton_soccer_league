@@ -68,20 +68,3 @@
     return dateText
   }
 </script>
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-    $('form').submit(function(event) {
-      //prevent form from submitting the default way
-      event.preventDefault();
-
-      var content = $(this).serialize();
-
-      var posting = $.post('/comments', content);
-
-      posting.done(function(data) {
-        var comment = data;
-        $("#comments").append(comment["content"]);
-      });
-    });
-  });
-</script>
