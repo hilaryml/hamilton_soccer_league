@@ -18,6 +18,7 @@ function attachNext() {
       $("#location").text("Location: " + data["location"]);
 
       var dateText = getDateText(data);
+      $("#dateTime").text(dateText);
 
       //comments here
       var comments = "<h4>Comments:</h4>";
@@ -55,8 +56,7 @@ function getDateText(data) {
   var month = months[monthNum];
 
   var time = new Date(data["time"]);
-  var hour = time.getHours();
-  var minutes = time.getMinutes();
 
-  var dateText = "Date and Time: " + month + day + " at " + hour + ":" + minutes
+  var dateText = "Date and Time: " + month + day + " at " + time.toLocaleTimeString()
+  return dateText
 }
